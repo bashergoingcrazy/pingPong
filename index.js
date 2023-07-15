@@ -15,31 +15,16 @@ const theBall = document.getElementById('ball');
 // console.log(msgTop);
 // console.log(msgLeft);
 
-function handleCollision(){
-    if(ball.style.left>=maxX){
-        velocityX=-velocityX
-    }
-    if(ball.style.top>=maxY){
-        velocityY = -velocityY
-    }
-    if(ball.style.left<=0){
-        velocityX=-velocityX;
-    }
-    if(ball.style.top<=0){
-        velocityY=-velocityY;
-    }
-}
-
-
-
-
 function moveBall() {
+    var ball = document.getElementById('ball');
     var maxX = window.innerWidth - ball.offsetWidth;
     var maxY = window.innerHeight - ball.offsetHeight;
-    var velocityX = 3;
-    var velocityY = 3;
+    var velocityX = 10;
+    var velocityY = 10;
     var newX = Math.floor(Math.random() * maxX);
     var newY = Math.floor(Math.random() * maxY);
+    var iterationCount = 0;
+  
     ball.style.left = newX + 'px';
     ball.style.top = newY + 'px';
   
@@ -47,20 +32,35 @@ function moveBall() {
       newX += velocityX;
       newY += velocityY;
   
-      if (newX >= maxX || newX <= 0) {
+      if (newX >= maxX - Math.max(velocityX,velocityY) || newX <= 0) {
         velocityX = -velocityX;
+        iterationCount++;
       }
-      if (newY >= maxY || newY <= 0) {
+      if (newY >= maxY -Math.max(velocityX,velocityY) || newY <= 0) {
         velocityY = -velocityY;
+        iterationCount++;
       }
   
       ball.style.left = newX + 'px';
       ball.style.top = newY + 'px';
   
-      requestAnimationFrame(updatePosition);
+    //   if (iterationCount >= 10) {
+    //     stopAnimation();
+    //     return;
+    //   }
+  
+      animationId = requestAnimationFrame(updatePosition);
     }
   
-    updatePosition();
-}
+    function stopAnimation(event) {
+      if(event.key=='Enter') {
+        cancelAnimationFrame(animationId);
+        document.removeEventListener('keydown', stopAnimation);
+      }  
+    }
+    var animationId = requestAnimationFrame(updatePosition);
+    document.addEventListener('keydown', stopAnimation);
+  }
   
-moveBall();
+  moveBall();
+  

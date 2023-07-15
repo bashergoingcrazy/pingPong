@@ -7,17 +7,57 @@
     /* margin-top: 4rem;
     margin-left: 6rem; */
     background-color: red;
+    z-index: 99;
     /* animation: moveBall 3s infinite; */
 }
+.dotted-border {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 4px dotted black;
+    width: 1%; /* Adjust the width as needed */
+    height: 100vh; /* Adjust the height as needed */
+    box-sizing: border-box;
+  }
+.home-screen{
+    position: relative;
+    font-size: 4rem;
+    margin: 0 auto;
+    text-align: center;
+    height: 60vh;
+    margin-top: 19rem;
+    font-family:cursive;
+}
+#scores {
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    top: 0;
+    left: 0;
+    width: 100%;
+     /* Adjust the background color and opacity as needed */
+    z-index: 99;
+    font-size: 2rem;
+    font-family: cursive;
+}
 
-/* @keyframes moveBall{
-    0%{
-        transform: translate(0,0);
-    }
-    50%{
-        transform:translate(100%,100);
-    }
-    100%{
-        transform: translate(0,0);
-    }
-} */
+#player1{
+    position: fixed;
+    width: 1.4rem;
+    height:7rem;
+    top: 40%;
+    left: 10px;
+    background-color: black;
+    border-radius: 10px;
+}
+#player2{
+    position: fixed;
+    width: 1.4rem;
+    height:7rem;
+    top: 40%;
+    right:10px;
+    background-color: black;
+    border-radius: 10px;
+}
+  
