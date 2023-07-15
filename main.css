@@ -1,6 +1,8 @@
 
 #ball{
-    position: absolute;
+    position: fixed;
+    top: 47%;
+    left: 49%;
     height: 30px;
     width: 30px;
     border-radius: 50%;
